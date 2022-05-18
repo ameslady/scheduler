@@ -23,7 +23,7 @@ const days = [
 
 export default function Application(props) {
   const [day, setDay] = useState('Monday');
-  console.log("🦋 ~ day", day);
+  console.log("🦋 ~ selected day:", day);
 
   return (
     <main className="layout">
