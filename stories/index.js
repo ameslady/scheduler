@@ -15,6 +15,7 @@ import Header from "components/Appointment/Header.js";
 import Empty from "components/Appointment/Empty.js";
 import Show from "components/Appointment/Show.js";
 import Confirm from "components/Appointment/Confirm.js";
+import Form from "components/Appointment/Form";
 
 
 // -- Data -- 
@@ -54,7 +55,7 @@ storiesOf("Button", module)
   ));
 
   // -- DayListItem stories -- 
-  storiesOf("DayListItem", module) 
+storiesOf("DayListItem", module) 
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) 
@@ -65,93 +66,110 @@ storiesOf("Button", module)
     <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> 
   ));
   
-  // -- DayList stories -- 
-  storiesOf("DayList", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
-    })
-    .add("Monday", () => (
-      <DayList days={days} value={"Monday"} onChange={action("setDay")} />
-    ))
-    .add("Tuesday", () => (
-      <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
-    ))
-    .add("Wednesday", () => (
-      <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
-    ));
+// -- DayList stories -- 
+storiesOf("DayList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
+  })
+  .add("Monday", () => (
+    <DayList days={days} value={"Monday"} onChange={action("setDay")} />
+  ))
+  .add("Tuesday", () => (
+    <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
+  ))
+  .add("Wednesday", () => (
+    <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+  ));
 
-  // -- InterviewerListItem stories -- 
-  storiesOf("InterviewerListItem", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-    })
-    .add("Unselected", () => (
-      <InterviewerListItem
-        id={interviewer.id}
-        name={interviewer.name}
-        avatar={interviewer.avatar}
-      />
-    ))
-    .add("Selected", () => (
-      <InterviewerListItem
-        id={interviewer.id}
-        name={interviewer.name}
-        avatar={interviewer.avatar}
-        selected
-      />
-    ))
-    .add("Clickable", () => (
-      <InterviewerListItem
-        name={interviewer.name}
-        avatar={interviewer.avatar}
-        setInterviewer={() => action("setInterviewer")(interviewer.id)}
-      />
-    ));
+// -- InterviewerListItem stories -- 
+storiesOf("InterviewerListItem", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Unselected", () => (
+    <InterviewerListItem
+      id={interviewer.id}
+      name={interviewer.name}
+      avatar={interviewer.avatar}
+    />
+  ))
+  .add("Selected", () => (
+    <InterviewerListItem
+      id={interviewer.id}
+      name={interviewer.name}
+      avatar={interviewer.avatar}
+      selected
+    />
+  ))
+  .add("Clickable", () => (
+    <InterviewerListItem
+      name={interviewer.name}
+      avatar={interviewer.avatar}
+      setInterviewer={() => action("setInterviewer")(interviewer.id)}
+    />
+  ));
     
-  // -- InterviewerList stories -- 
-  storiesOf("InterviewerList", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-    })
-    .add("Initial", () => (
-      <InterviewerList
-        interviewers={interviewers}
-      />
-    ))
-    .add("Selected", () => (
-      <InterviewerList
-        interviewers={interviewers}
-        value={3}
-      />
-    ))
-    .add("Clickable", () => (
-      <InterviewerList
-        interviewers={interviewers}
-        onChange={action("setInterviewer")}
-      />
-    ));
+// -- InterviewerList stories -- 
+storiesOf("InterviewerList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Initial", () => (
+    <InterviewerList
+      interviewers={interviewers}
+    />
+  ))
+  .add("Selected", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      value={3}
+    />
+  ))
+  .add("Clickable", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      onChange={action("setInterviewer")}
+    />
+  ));
 
-    // -- Appointment stories --
-    storiesOf("Appointment", module)
-      .addParameters({
-        backgrounds: [{ name: "white", value: "#fff", default: true }]
-      })
-      .add("Appointment", () => <Appointment />)
-      .add("Appointment with Time", () => <Appointment time="12pm" />)
-      .add("Header", () => <Header time="12pm" />)
-      .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
-      .add("Show", () => (
-        <Show
-          student="Lydia Miller-Jones" 
-          interviewer={interviewer} 
-          onEdit={action("onEdit")} 
-          onDelete={action("onDelete")}
-        />
-      ))
-      .add("Confirm", () => (
-        <Confirm
-          message="Delete the appointment?"
-          onConfirm={action("onConfirm")}
-          onCancel={action("onCancel")}/>
-      ));
+// -- Appointment stories --
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
+  .add("Show", () => (
+    <Show
+      student="Lydia Miller-Jones" 
+      interviewer={interviewer} 
+      onEdit={action("onEdit")} 
+      onDelete={action("onDelete")}
+    />
+  ))
+  .add("Confirm", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}/>
+  ))
+  .add("Edit", () => (
+    <Form 
+      student="Amy Martin"
+      interviewer={interviewer.id}
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ))
+  .add("Create", () => (
+    <Form 
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ));
+
 
