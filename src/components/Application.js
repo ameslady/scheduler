@@ -41,7 +41,6 @@ export default function Application(props) {
       const interviewers = all[2].data;
       console.log("🦋 ~ interviewers:", interviewers);
 
-
       setState(prev => ({...prev, days, appointments }));
     })
   }, []);

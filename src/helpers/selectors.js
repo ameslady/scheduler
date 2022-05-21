@@ -1,5 +1,3 @@
-import react from "react";
-
 function getAppointmentsForDay(state, day) {
   // returns an array of appointments for that day
   const todaysAppointments = [];
