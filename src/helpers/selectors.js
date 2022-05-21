@@ -1,6 +1,6 @@
 import react from "react";
 
-export function getAppointmentsForDay(state, day) {
+function getAppointmentsForDay(state, day) {
   // returns an array of appointments for that day
   const todaysAppointments = [];
   let appointmentKeys = [];
@@ -19,3 +19,30 @@ export function getAppointmentsForDay(state, day) {
 
   return todaysAppointments;
 };
+
+function getInterview(state, interview) {
+  let interviewInfo = {
+    "student": "test",
+    "interviewer": {
+      "id": 0,
+      "name": "",
+      "avatar": ""
+    }
+  }
+
+  if (!interview) return null;
+  
+  interviewInfo.student = interview.student;
+  interviewInfo.interviewer.id = interview.interviewer;
+
+  for (const key in state.interviewers) {
+    if (Number(key) === interview.interviewer) {
+      interviewInfo.interviewer.name = state.interviewers[key].name;
+      interviewInfo.interviewer.avatar = state.interviewers[key].avatar;
+    }   
+  }
+
+  return interviewInfo;
+};
+
+export { getAppointmentsForDay, getInterview };
