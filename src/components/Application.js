@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DayList from "components/DayList.js";
 import Appointment from "components/Appointment";
@@ -29,7 +29,7 @@ export default function Application(props) {
     })
   }, []);
 
-
+  
   const appointmentItems = dailyAppointments.map((appointment) => 
     <Appointment 
       key={appointment.id} 
@@ -60,7 +60,10 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {appointmentItems}
+        <Fragment>
+          {appointmentItems}
+          <Appointment time="5pm" />
+        </Fragment>
       </section>
     </main>
   );
