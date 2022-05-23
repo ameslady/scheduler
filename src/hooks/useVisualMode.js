@@ -16,12 +16,12 @@ export default function useVisualMode(initial) {
   };
   
   function back() {
-    const newHistory = [...history];
+    const currentHistory = [...history];
     
     if (history.length > 1) {
-      newHistory.pop();
-      setHistory(newHistory);
-      const prevMode = newHistory[newHistory.length - 1];
+      currentHistory.pop();
+      setHistory(currentHistory);
+      const prevMode = currentHistory[currentHistory.length - 1];
       setMode(prevMode);
     }
   };
