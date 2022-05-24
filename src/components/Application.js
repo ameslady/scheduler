@@ -27,8 +27,6 @@ export default function Application(props) {
     const interview = getInterview(state, appointment.interview);
 
     function bookInterview(id, interview) {
-      console.log("🦋 ~ bookInterview:", id, interview);
-
       const appointment = {
         ...state.appointments[id],
         interview: { ...interview },
@@ -82,6 +80,8 @@ export default function Application(props) {
         });
     }
 
+    function editInterview(id, interview) {}
+
     return (
       <Appointment
         key={appointment.id}
@@ -91,6 +91,7 @@ export default function Application(props) {
         interviewers={interviewers}
         bookInterview={bookInterview}
         deleteInterview={deleteInterview}
+        editInterview={editInterview}
       />
     );
   });
