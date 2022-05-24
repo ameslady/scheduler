@@ -15,12 +15,23 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
   
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    
+    props.bookInterview(props.id, interview).then(() => {
+      transition(SHOW)
+    })
+  }
+  
   return (
     <article className="appointment">
       <Header time={props.time}/>
       {/* {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty/>} */}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()}/>}
+      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={save}/>}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
