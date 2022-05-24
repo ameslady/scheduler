@@ -3,6 +3,7 @@ import Header from "./Header";
 import Form from "./Form";
 import Show from "./Show";
 import Empty from "./Empty";
+import Status from "./Status";
 import useVisualMode from "../../hooks/useVisualMode.js";
 import "components/Appointment/styles.scss";
 
@@ -35,6 +36,7 @@ export default function Appointment(props) {
       {/* {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty/>} */}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={save}/>}
+      {mode === SAVING && <Status /> }
       {mode === SHOW && (
         <Show
           student={props.interview.student}
