@@ -9,6 +9,7 @@ import "components/Appointment/styles.scss";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
@@ -20,6 +21,8 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+
+    transition(SAVING);
     
     props.bookInterview(props.id, interview).then(() => {
       transition(SHOW)
