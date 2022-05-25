@@ -10,7 +10,23 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
+  for (const item of state.days) {
+    console.log(`🦋 ~ ${item.name} spots:`, item.spots);
+  }
+
+  // create function
+  // takes state and appointments params
+  // create a variable call totalSpots = 0
+  // filter state days (store as variable)
+  // check parameter of filter === state.day
+  // make new variable for appointments
+  // for each the variable on line 19
+  // check if appointmnets has a interview
+  // if it does increase spots
+  // if not return the same total spots
+
   function bookInterview(id, interview) {
+    // what exactly are these doing?
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -21,11 +37,14 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+    // mapp through days to see what they equal
+
     return axios({
       method: "put",
       url: `/api/appointments/${id}`,
       data: { interview },
     }).then((response) => {
+      // update days that contains spots
       setState({
         ...state,
         appointments,
@@ -49,6 +68,7 @@ export default function useApplicationData() {
       url: `/api/appointments/${id}`,
       data: { interview },
     }).then((response) => {
+      // update days that contains spots
       setState({
         ...state,
         appointments,
