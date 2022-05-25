@@ -10,23 +10,24 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
-  for (const item of state.days) {
-    console.log(`🦋 ~ ${item.name} spots:`, item.spots);
-  }
+  const updateSpots = function (state, appointments) {
+    const updatedDays = [...state.days];
+    const updatedDay = { ...state.days.find((day) => day.name === state.day) };
+    const dayIndex = updatedDays.findIndex((day) => day.name === state.day);
 
-  // create function
-  // takes state and appointments params
-  // create a variable call totalSpots = 0
-  // filter state days (store as variable)
-  // check parameter of filter === state.day
-  // make new variable for appointments
-  // for each the variable on line 19
-  // check if appointmnets has a interview
-  // if it does increase spots
-  // if not return the same total spots
+    const appointmentIDs = updatedDay.appointments;
+
+    const spots = appointmentIDs.filter(
+      (id) => !appointments[id].interview
+    ).length;
+
+    updatedDay.spots = spots;
+    updatedDays[dayIndex] = updatedDay;
+
+    return updatedDays;
+  };
 
   function bookInterview(id, interview) {
-    // what exactly are these doing?
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -37,17 +38,17 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
-    // mapp through days to see what they equal
+    const days = updateSpots(state, appointments);
 
     return axios({
       method: "put",
       url: `/api/appointments/${id}`,
       data: { interview },
     }).then((response) => {
-      // update days that contains spots
       setState({
         ...state,
         appointments,
+        days,
       });
     });
   }
@@ -55,7 +56,7 @@ export default function useApplicationData() {
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview },
+      interview: interview,
     };
 
     const appointments = {
@@ -63,15 +64,17 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+    const days = updateSpots(state, appointments);
+
     return axios({
       method: "delete",
       url: `/api/appointments/${id}`,
       data: { interview },
     }).then((response) => {
-      // update days that contains spots
       setState({
         ...state,
         appointments,
+        days,
       });
     });
   }
