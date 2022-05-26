@@ -13,6 +13,7 @@ export default function Form(props) {
   };
 
   const cancel = () => {
+    setError("");
     reset();
     props.onCancel();
   };
@@ -32,6 +33,7 @@ export default function Form(props) {
       return;
     }
 
+    setError("");
     props.onSave(student, interviewer);
   }
 
