@@ -44,4 +44,4 @@ npm run storybook
 
 ## Roadmap
 
-- Stretch Activities
+- Stretch activities
