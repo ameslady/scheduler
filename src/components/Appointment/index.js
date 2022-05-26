@@ -1,6 +1,8 @@
 import React from "react";
 import "components/Appointment/styles.scss";
 
+import useVisualMode from "../../hooks/useVisualMode.js";
+
 import Header from "./Header";
 import Form from "./Form";
 import Show from "./Show";
@@ -8,7 +10,6 @@ import Empty from "./Empty";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
-import useVisualMode from "../../hooks/useVisualMode.js";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
