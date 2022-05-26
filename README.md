@@ -13,7 +13,7 @@ Using the latest tools and techniques, I built and tested a React application th
 ## Setup
 
 - Install dependencies with `npm install`.
-- Git clone [scheduler-api repro](https://github.com/lighthouse-labs/scheduler-api)
+- Fork and git clone [scheduler-api repro](https://github.com/lighthouse-labs/scheduler-api)
   - Follow README instructions to setup
 - Visit `http://localhost:8080/` to view application
 - Reset the database: `http://localhost:8081/api/debug/reset`
