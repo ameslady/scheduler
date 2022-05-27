@@ -26,6 +26,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // saves a new interview to the db
   function save(name, interviewer) {
     const interview = { student: name, interviewer };
 
@@ -37,6 +38,7 @@ export default function Appointment(props) {
       .catch((error) => transition(ERROR_SAVE, true));
   }
 
+  // deletes an exisiting interview from the db
   function destroy() {
     transition(DELETING, true);
 
