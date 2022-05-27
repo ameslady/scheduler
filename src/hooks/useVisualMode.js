@@ -16,7 +16,7 @@ export default function useVisualMode(initial) {
     setMode(newMode);
   }
 
-  // reverts back to the previous state in the stack
+  // reverts back to the previous mode in the stack
   function back() {
     const currentHistory = [...history];
 
