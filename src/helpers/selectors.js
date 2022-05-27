@@ -38,6 +38,7 @@ function getInterviewersForDay(state, day) {
   return todaysInterviewers;
 }
 
+// updates an interview slot with the relevant info
 function getInterview(state, interview) {
   let interviewInfo = {
     student: "test",

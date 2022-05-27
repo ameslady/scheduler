@@ -10,6 +10,7 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
+  // updates the available spots for a specific day
   const updateSpots = function (state, appointments) {
     const updatedDays = [...state.days];
     const updatedDay = { ...state.days.find((day) => day.name === state.day) };
@@ -27,6 +28,7 @@ export default function useApplicationData() {
     return updatedDays;
   };
 
+  // creates a new interview
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -53,6 +55,7 @@ export default function useApplicationData() {
     });
   }
 
+  // cancels an existing interview
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
