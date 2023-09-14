@@ -1,6 +1,6 @@
-# Interview Scheduler 📅
+# Appointment Scheduler 📅
 
-Using the latest tools and techniques, I built and tested a React application that allows users to book and cancel interviews. I combined a concise API with a WebSocket server to build a realtime experience.
+Using the latest tools and techniques, I built and tested a React application that allows users to book and cancel appointments. I combined a concise API with a WebSocket server to build a realtime experience.
 
 ## Final Product
 
