@@ -42,4 +42,4 @@ npm run storybook
 
 ## Roadmap
 
-- Stretch activities
+- Integrate a test payment provider
